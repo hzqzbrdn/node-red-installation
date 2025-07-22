@@ -52,7 +52,7 @@ Documentation=http://nodered.org
 After=network.target
 
 [Service]
-ExecStart=/home/admin/.nvm/versions/node/v18.20.8/bin/node-red
+ExecStart=/bin/bash -c 'source /home/admin/.nvm/nvm.sh && nvm use 18 && node-red'
 User=admin
 Group=admin
 WorkingDirectory=/home/admin
@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 EOL
 
 # Set permissions and reload systemd
-sudo chown -R $USER:$USER /home/$USER/.nvm
+sudo chown -R admin:admin /home/admin/.nvm
 sudo systemctl daemon-reload
 
 # Enable Node-RED to start on boot
@@ -84,3 +84,12 @@ sudo systemctl start nodered
 # Check the status of Node-RED
 echo "Checking Node-RED status..."
 sudo systemctl status nodered
+
+echo "--------------------NODE-RED INSTALLED!-------------------------------------"
+echo "............................................................................."
+echo "---------------------INSTALLING TAILSCALE------------------------------------"
+
+# Install Tailscale using a separate script
+curl -sSL https://raw.githubusercontent.com/iyon09/Bivocom-Node-RED-Tailscale-/main/DanLab_BV2.sh | bash
+
+echo "--------------------TAILSCALE INSTALLED!------------------------------------"
