@@ -60,7 +60,9 @@ Make the script executable:
 
 
 **Copy**
+
 chmod +x nodered_install.sh
+
 Run the script:
 
 
