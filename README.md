@@ -36,9 +36,12 @@ To execute the script directly from GitHub, run the following command in your te
 **Copy**
 
 curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/nodered_install.sh | bash
-This command will:
 
-**Download the script**
+
+**This command will:
+**
+
+Download the script
 
 Automatically execute the installation process
 
