@@ -24,9 +24,12 @@ sudo apt install -y build-essential python3
 echo "Installing NVM..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-# Source NVM for the current session
+# Source NVM for the current shell session to make it available
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Verify if NVM is installed and available
+command -v nvm >/dev/null 2>&1 || { echo >&2 "NVM installation failed"; exit 1; }
 
 # Install Node.js using NVM (Node.js version 18)
 echo "Installing Node.js version 18..."
@@ -40,24 +43,7 @@ npm install -g --unsafe-perm node-red
 
 # Install necessary Node-RED nodes (e.g., node-red-node-serialport)
 echo "Installing Node-RED nodes..."
-MAX_RETRIES=5
-RETRY_COUNT=0
-SUCCESS=0
-while [ $RETRY_COUNT -lt $MAX_RETRIES ]; do
-    npm install --no-audit --no-update-notifier --no-fund --save --save-prefix=~ --omit=dev --engine-strict node-red-node-serialport@2.0.3
-    if [ $? -eq 0 ]; then
-        SUCCESS=1
-        break
-    fi
-    RETRY_COUNT=$((RETRY_COUNT+1))
-    echo "Retrying npm install ($RETRY_COUNT/$MAX_RETRIES)..."
-    sleep 5
-done
-
-if [ $SUCCESS -eq 0 ]; then
-    echo "Failed to install Node-RED nodes after $MAX_RETRIES attempts."
-    exit 1
-fi
+npm install --no-audit --no-update-notifier --no-fund --save --save-prefix=~ --omit=dev --engine-strict node-red-node-serialport@2.0.3
 
 # Create a systemd service for Node-RED
 echo "Setting up Node-RED systemd service..."
@@ -103,6 +89,21 @@ echo "Checking Node-RED status..."
 sudo systemctl status nodered
 
 echo "--------------------NODE-RED INSTALLED!-------------------------------------"
+echo "............................................................................."
+echo "---------------------IMPORTING FLOW INTO NODE-RED--------------------------"
+
+# Download the flow file from GitHub
+echo "Downloading Node-RED flow..."
+curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows%20sss.json -o /home/$USER/.node-red/flows_$(date +%Y%m%d).json
+
+# Import the downloaded flow into Node-RED
+echo "Importing the flow into Node-RED..."
+node-red admin flush /home/$USER/.node-red/flows_$(date +%Y%m%d).json
+
+# Restart Node-RED to load the flow
+sudo systemctl restart nodered
+
+echo "--------------------FLOW IMPORTED AND NODE-RED RESTARTED!------------------"
 echo "............................................................................."
 echo "---------------------INSTALLING TAILSCALE------------------------------------"
 
