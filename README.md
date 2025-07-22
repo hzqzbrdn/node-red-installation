@@ -35,7 +35,7 @@ To execute the script directly from GitHub, run the following command in your te
 
 **Copy**
 
-curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/nodered_install.sh | bash
+curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/node-tailscale_install.sh | bash
 
 
 **This command will:
