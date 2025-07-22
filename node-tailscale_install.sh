@@ -1,17 +1,5 @@
 #!/bin/bash
 
-echo "*****************************************************
-#   N   N  OOO   DDDD   EEEEE   RRRR    EEEEE   DDDD
-#   NN  N O   O  D   D  E       R   R   E       D   D
-#   N N N O   O  D   D  EEEE    RRRR    EEEE    D   D
-#   N  NN O   O  D   D  E       R  R    E       D   D
-#   N   N  OOO   DDDD   EEEEE   R   R   EEEEE   DDDD
-#                                                    
-#               Script created by: haziq
-#       Automating the Node-RED installation process!   
-# *****************************************************"
-
-
 echo "Updating system..."
 sudo apt update -y
 sudo apt upgrade -y
