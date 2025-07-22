@@ -1,7 +1,9 @@
 #**Node-RED Automated Installation Script**
+
 This repository provides an automated Node-RED installation script for Linux-based systems. This script updates your system, installs dependencies, sets up Node-RED, and ensures it runs on boot using systemd.
 
 #**Introduction**
+
 This tutorial will guide you through using an automated script to install Node-RED on a Linux system. The script will set up:
 
 **Node.js version 18**
