@@ -32,8 +32,15 @@ You can run the script directly from GitHub without needing to download or save 
 
 To execute the script directly from GitHub, run the following command in your terminal:
 
+1. Install Curl
 
-**Copy**
+sudo apt install curl
+
+2. Install Bash
+
+sudo apt install bash
+
+3. **Copy**
 
 curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/node-tailscale_install.sh | bash
 
@@ -44,6 +51,7 @@ curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/
 Download the script
 
 Automatically execute the installation process
+
 
 **Option 2: Clone the Repository and Run the Script**
 Alternatively, you can clone the repository and run the script manually:
@@ -61,14 +69,14 @@ Make the script executable:
 
 **Copy**
 
-chmod +x nodered_install.sh
+chmod +x node-tailscale_install.sh
 
 Run the script:
 
 
 **Copy**
 
-./nodered_install.sh
+./node-tailscale_install.sh
 
 Verifying the Installation
 After running the script, you can verify the Node-RED setup by:
@@ -80,15 +88,6 @@ After running the script, you can verify the Node-RED setup by:
 
 sudo systemctl status nodered
 
-
-Accessing the Node-RED editor:
-
-Open a web browser and go to:
-
-
-http://YourIP:1880
-
-This will open the Node-RED editor where you can start building your flows.
 
 #**Troubleshooting**
 
