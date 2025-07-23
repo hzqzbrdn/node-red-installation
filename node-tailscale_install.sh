@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # *****************************************************
-#   N   N  OOO   DDDD   EEEEE   RRRR    EEEEE   DDDD
-#   NN  N O   O  D   D  E       R   R   E       D   D
-#   N N N O   O  D   D  EEEE    RRRR    EEEE    D   D
-#   N  NN O   O  D   D  E       R  R    E       D   D
-#   N   N  OOO   DDDD   EEEEE   R   R   EEEEE   DDDD
-#                                                    
-#               Script created by: haziq
-#       Automating the Node-RED installation process!   
+#  HH   HH   AAAAA   ZZZZZ   IIIII   QQQQQ  
+#  HH   HH   A   A      Z      I    Q     Q
+#  HHHHHHH   AAAAA     Z       I    Q     Q
+#  HH   HH   A   A    Z        I    Q   Q Q
+#  HH   HH   A   A   ZZZZZ   IIIII   QQQQQ Q
+#                                            Q
+#           Script created by: haziq
+#   Automating the Node-RED installation process!   
 # *****************************************************
 
 # Update system
