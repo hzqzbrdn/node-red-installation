@@ -55,15 +55,15 @@ Documentation=http://nodered.org
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c 'source /home/admin/.nvm/nvm.sh && nvm use 18 && node-red'
-User=admin
-Group=admin
-WorkingDirectory=/home/admin
+ExecStart=/bin/bash -c 'source /home/$USER/.nvm/nvm.sh && nvm use 18 && node-red'
+User=$USER
+Group=$USER
+WorkingDirectory=/home/$USER
 Restart=on-failure
 Environment=NODE_RED_OPTIONS=-v
-Environment=PATH=/home/admin/.nvm/versions/node/v18.20.8/bin:$PATH
-Environment=HOME=/home/admin
-Environment=USER=admin
+Environment=PATH=/home/$USER/.nvm/versions/node/v18.20.8/bin:$PATH
+Environment=HOME=/home/$USER
+Environment=USER=$USER
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=node-red
