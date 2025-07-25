@@ -1,15 +1,8 @@
 #!/bin/bash
 
-# ************************************************
-#  HH   HH   AAAAA   ZZZZZ   IIIII   QQQQQ  
-#  HH   HH   A   A      Z      I    Q     Q
-#  HHHHHHH   AAAAA     Z       I    Q     Q
-#  HH   HH   A   A    Z        I    Q   Q Q
-#  HH   HH   A   A   ZZZZZ   IIIII   QQQQQ Q
-#                                            Q
-#           Script created by: haziq
-#   Automating the Node-RED installation process!   
-# ************************************************
+echo "************************************************"
+echo "           Script created by: haziq"   
+echo "************************************************"
 
 # Update system
 echo "Updating system..."
