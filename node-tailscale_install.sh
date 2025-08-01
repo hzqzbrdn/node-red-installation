@@ -36,7 +36,9 @@ npm install -g --unsafe-perm node-red
 
 # Install necessary Node-RED nodes (e.g., node-red-node-serialport)
 echo "Installing Node-RED nodes..."
-npm install --no-audit --no-update-notifier --no-fund --save --save-prefix=~ --omit=dev --engine-strict node-red-node-serialport@2.0.3
+cd /home/$USER/.node-red
+npm install node-red-node-serialport@2.0.3
+
 
 # Create a systemd service for Node-RED
 echo "Setting up Node-RED systemd service..."
@@ -85,14 +87,10 @@ echo "--------------------NODE-RED INSTALLED!-----------------------------------
 echo "............................................................................."
 echo "---------------------IMPORTING FLOW INTO NODE-RED--------------------------"
 
-# # Download the flow file from GitHub
-# echo "Downloading Node-RED flow..."
-# curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows%20sss.json -o /home/$USER/.node-red/flows_$(date +%Y%m%d).json
-
-# # Import the downloaded flow into Node-RED
-# echo "Importing the flow into Node-RED..."
-# node-red admin flush /home/$USER/.node-red/flows_$(date +%Y%m%d).json
-
+# Download the new flow from GitHub
+echo "Downloading new Node-RED flow..."
+curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows_SSS.json \
+-o /home/$USER/.node-red/flows.json
 
 # Restart Node-RED to load the flow
 sudo systemctl restart nodered
@@ -116,4 +114,9 @@ KERNEL=="ttyS0", MODE="0666"
 KERNEL=="ttyS3", MODE="0666"
 EOL
 
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+
 echo "------------------------ttyS0 & ttyS3 MODIFIED---------------------------------"
+
+echo "---------------------REBOOTING----------------------------------------------"
