@@ -85,13 +85,14 @@ echo "--------------------NODE-RED INSTALLED!-----------------------------------
 echo "............................................................................."
 echo "---------------------IMPORTING FLOW INTO NODE-RED--------------------------"
 
-# Download the flow file from GitHub
-echo "Downloading Node-RED flow..."
-curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows%20sss.json -o /home/$USER/.node-red/flows_$(date +%Y%m%d).json
+# # Download the flow file from GitHub
+# echo "Downloading Node-RED flow..."
+# curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows%20sss.json -o /home/$USER/.node-red/flows_$(date +%Y%m%d).json
 
-# Import the downloaded flow into Node-RED
-echo "Importing the flow into Node-RED..."
-node-red admin flush /home/$USER/.node-red/flows_$(date +%Y%m%d).json
+# # Import the downloaded flow into Node-RED
+# echo "Importing the flow into Node-RED..."
+# node-red admin flush /home/$USER/.node-red/flows_$(date +%Y%m%d).json
+
 
 # Restart Node-RED to load the flow
 sudo systemctl restart nodered
@@ -103,4 +104,16 @@ echo "---------------------INSTALLING TAILSCALE---------------------------------
 # Install Tailscale using a separate script
 curl -sSL https://raw.githubusercontent.com/iyon09/Bivocom-Node-RED-Tailscale-/main/DanLab_BV2.sh | bash
 
+sudo systemctl enable tailscaled
+sudo systemctl start tailscaled
+
 echo "--------------------TAILSCALE INSTALLED!------------------------------------"
+
+echo "-----------Check and Modify Permissions for /dev/ttyS0 and /dev/ttyS3----------------------"
+
+cat <<EOL | sudo tee /etc/udev/rules.d/99-serial.rules
+KERNEL=="ttyS0", MODE="0666"
+KERNEL=="ttyS3", MODE="0666"
+EOL
+
+echo "------------------------ttyS0 & ttyS3 MODIFIED---------------------------------"
