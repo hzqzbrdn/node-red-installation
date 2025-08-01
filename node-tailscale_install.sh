@@ -39,7 +39,7 @@ echo "Installing Node-RED nodes..."
 cd /home/$USER/.node-red
 npm install node-red-node-serialport@2.0.3
 
-
+cd ..
 # Create a systemd service for Node-RED
 echo "Setting up Node-RED systemd service..."
 
@@ -67,7 +67,7 @@ SyslogIdentifier=node-red
 WantedBy=multi-user.target
 EOL
 
-# Set permissions and reload systemd
+echo "Set permissions and reload systemd"
 sudo chown -R $USER:$USER /home/$USER/.nvm
 sudo systemctl daemon-reload
 
@@ -92,7 +92,7 @@ echo "Downloading new Node-RED flow..."
 curl -sSL https://raw.githubusercontent.com/hzqzbrdn/node-red-installation/main/flows_SSS.json \
 -o /home/$USER/.node-red/flows.json
 
-# Restart Node-RED to load the flow
+echo "Restarting Node-RED to load the new flow..."
 sudo systemctl restart nodered
 
 echo "--------------------FLOW IMPORTED AND NODE-RED RESTARTED!------------------"
@@ -120,3 +120,5 @@ sudo udevadm trigger
 echo "------------------------ttyS0 & ttyS3 MODIFIED---------------------------------"
 
 echo "---------------------REBOOTING----------------------------------------------"
+
+sudo reboot
